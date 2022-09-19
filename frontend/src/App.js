@@ -1,10 +1,17 @@
+import {Routes, Route, useNavigate} from 'react-router-dom';
+import Login from './components/Login';
+import Register from './components/Register';
+import Home from './container/Home';
+
 
 
 function App() {
   return (
-    <div>
-      <h1 className="underline text-3xl text-yellow-500">If tailwindcss is working; this text will be yellow and underlined</h1>
-    </div>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="*" element={<Home />} />
+    </Routes>
   );
 }
 
