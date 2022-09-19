@@ -1,0 +1,9 @@
+node_modules
+config
+package.json
+.eslintrc
+.npmignore
+README.md
+sanity.json
+tsconfig.json
+yarn.lock
