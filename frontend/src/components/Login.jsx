@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import GoogleLogin from 'react-google-login';
 import { gapi } from 'gapi-script';
 
@@ -7,13 +7,22 @@ import { gapi } from 'gapi-script';
 
 import pinterestlogo from '../assets/pinterestlogo.png';
 
+
+import {client} from '../client';
+
 const CLIENT_ID = process.env.REACT_APP_GOOGLE_API_CLIENT_ID
 
 
 const Login = () => {
+
+
+    //let's use the react navigation to navigate to the home page after loging in successfully
+     const navigate = useNavigate();
+
    /*const responseGoogle = (response) => {
         console.log(response);
    }*/
+
    useEffect(() => {
     const initClient = () => {
             gapi.client.init({
@@ -23,8 +32,33 @@ const Login = () => {
         };
         gapi.load('client:auth2', initClient);
     });
+
    const onSuccess = (res) => {
-        console.log('[Login Successfull] currentUser:', res.profileObj);
+        //console.log('[Login Successfull] currentUser:', res.profileObj);
+
+        localStorage.setItem('user', JSON.stringify(res.profileObj));
+
+        const {name, googleId, imageUrl} = res.profileObj;
+        //doc to save to the sanitiy database
+        const doc = {
+            _id: googleId,
+            _type: 'user',
+            username:name,
+            image: imageUrl
+        };
+
+
+        //create the user if not already created
+        client.createIfNotExists(doc).then((res) => {
+            console.log(res);
+            //navigate to the home page
+            navigate('/', {replace: true});
+
+        }).catch((err) => {
+            console.log(err);
+        });
+
+
     };
     const onFailure = (res) => {
         console.log('[Login failed] res:', res);
@@ -73,7 +107,7 @@ const Login = () => {
                         onSuccess={onSuccess}
                         onFailure={onFailure}
                         cookiePolicy={'single_host_origin'}
-                        isSignedIn={true}
+                        //isSignedIn={true}
                     />
 
                     <button type="button" className="text-white justify-center w-full bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2 mb-2">
