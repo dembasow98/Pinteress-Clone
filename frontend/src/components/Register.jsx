@@ -1,6 +1,6 @@
 import {Component} from 'react';
 import {Link} from 'react-router-dom';
-import pinterestlogo from '../img/pinterestlogo.png';
+import pinterestlogo from '../assets/pinterestlogo.png';
 
 class Register extends Component{
     render(){
@@ -26,7 +26,7 @@ class Register extends Component{
                             <input autoComplete='new-password' className="w-full border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:border-blue-500" type="password" placeholder="Password"/>
                         </div>
                         <div className="flex flex-col justify-center items-center w-full">
-                            <label className="text-gray-900 dark:text-gray-500e">Confirm Password</label>
+                            <label className="text-gray-900 dark:text-gray-500">Confirm Password</label>
                             <input autoComplete='new-password' className="w-full border-2 border-gray-300 p-2 rounded-lg focus:outline-none focus:border-blue-500" type="password" placeholder="Confirm Password"/>
                         </div>
                         <div className='LOGIN-BUTTON flex items-center min-w-[70%] mt-3'>
@@ -34,7 +34,7 @@ class Register extends Component{
                         </div>
                     </form>
                     {/*Already user? Login*/}
-                    <div className="flex justify-center items-center w-full mt-3 text-sm font-medium">
+                    <div className="flex justify-center items-center w-full mt-3 text-sm font-medium mb-5">
                     <p className='text-sm font-medium'>Already user? <Link to='/login' className='text-blue-500'>Login</Link></p>
                     </div>
                 </div>

@@ -70,6 +70,32 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-###Packages for the app:
+# Packages for the app:
 
-### `npm install @sanity/client @sannity/image-url react-google-login react-icons react-loader-spinner react-masonry-css react-router-dom uuid --legacy-peer-deps`
+## React @sanity/client installation:
+`npm install --location=global @sanity/client`
+
+## React @sanity/image-url installation:
+`npm install --location=global @sanity/image-url`
+
+## React  react-google-login package installation:
+`npm install --location=global react-google-login`
+
+## React  react-icons package installation:
+`npm install --location=global react-icons`
+
+## React  react-loader-spinnner package installation:
+`npm install --location=global react-loader-spinnner`
+
+## React  react-masonry-css package installation:
+`npm install --location=global react-masonry-css`
+
+## React  react-router-dom@latest package installation:
+`npm install --location=global react-router-dom@latest`
+
+## React  uuid package installation:
+`npm install --location=global uuid`
+
+## React gapi-script installation:
+`npm install --location=global gapi-script`
+
