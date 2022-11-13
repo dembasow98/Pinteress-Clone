@@ -37,17 +37,17 @@ const Sidebar = ( {user, closeToggle}) => {
   ];
   
   return (
-    <div className='flex bg-black flex-col justify-between h-full overflow-y-scroll min-w-210 hide-scrollbar'>
+    <div className='flex bg-black w-full flex-col justify-between h-full overflow-y-scroll min-w-210 hide-scrollbar'>
       <div className='flex flex-col'>
-        
         <Link 
           to="/" 
           onClick={handleCloseSidebar}
           className='flex flex-row items-center justify-start'
         >
-          <img src={logo} alt="logo" className="h-12 w-12"/>
-          <span className="text-gray-700 dark:text-gray-50 text-xl font-extrabold">PINTEREST</span>
+          <img src={logo} alt="logo" className=" h-12 w-12  cursor-pointer "/>
+          <span className="text-gray-700 cursor-pointer dark:text-gray-50 text-xl font-extrabold">PINTEREST</span>
         </Link>
+       
 
         <div className='flex flex-col gap-2 mt-2'>
           <NavLink 

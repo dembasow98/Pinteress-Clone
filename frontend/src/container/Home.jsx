@@ -44,7 +44,7 @@ const Home = () => {
 
     return (
         <div className="flex flex-col md:flex-row h-screen min-h-screen w-full transaction-height duration-75 ease-out bg-gray-50 dark:text-slate-100 dark:bg-gray-900">
-            <div className="hidden md:flex h-screen md:w-[30%] lg:w-1/5 flex-initial">
+            <div className="hidden md:flex h-screen w-2/5 md:w-[30%] xm:w-[28%] lg:w-[25%] xl:w-[20%] flex-initial">
                 <Sidebar user={user?user:null} closeToggle ={setToggleSidebar} />
                 {/* <Sidebar user = {user && user} closeToggle = {setToggleSidebar(false)} /> */}
             </div>
@@ -69,7 +69,7 @@ const Home = () => {
 
             {
                 toggleSidebar && (
-                    <div className="fixed w-4/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
+                    <div className="fixed w-[80%] bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
                         <div className="absolute w-full flex justify-end items-center p-2">
                             <AiFillCloseCircle fontSize={30} className="cursor-pointer" onClick={() => setToggleSidebar(false)} />
                         </div>

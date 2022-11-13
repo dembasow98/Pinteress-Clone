@@ -1,9 +1,28 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import {Routes, Route} from 'react-router-dom'
 
-const Pins = () => {
+import {Navbar, Search, Feed, CreatePin, PinDetail} from '../components'
+
+const Pins = ({user}) => {
+  const [searchTerm, setSearchTerm] = useState('')
+
+
+
   return (
-    <div className='flex w-full dark:text-gray-100 '>
-      Pins
+    <div className='px-2 md:px-5 dark:text-gray-100 '>
+      <div className=''>
+        <Navbar searchItem={searchTerm} setSearchItem={setSearchTerm} user = {user}/>
+      </div>
+      <div className='h-full'>
+        <Routes>
+          <Route path='/' element={<Feed />} />
+          <Route path='/create-pin' element={<CreatePin user = {user}/>} />
+          <Route path='/pin-detail/:pinId' element={<PinDetail user={user} />} />
+          <Route path='/category/:categoryId' element={<Feed/>} />
+          <Route path='/search' element={<Search searchTerm= {searchTerm} setSearchItem = {setSearchTerm} />} />
+        </Routes>
+
+      </div>
     </div>
   )
 }
