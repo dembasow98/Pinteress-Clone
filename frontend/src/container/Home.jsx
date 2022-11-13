@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from "react";
 import {HiMenu} from "react-icons/hi";
-import {AiOutlineClose} from "react-icons/ai";
+import {AiFillCloseCircle} from "react-icons/ai";
 
 import {Link, Routes, Route} from "react-router-dom";
 
@@ -45,7 +45,7 @@ const Home = () => {
     return (
         <div className="flex flex-col md:flex-row h-screen min-h-screen w-full transaction-height duration-75 ease-out bg-gray-50 dark:text-slate-100 dark:bg-gray-900">
             <div className="hidden md:flex h-screen md:w-[30%] lg:w-1/5 flex-initial">
-                <Sidebar user={user?user:null} toggleSidebar={toggleSidebar} setToggleSidebar={setToggleSidebar} />
+                <Sidebar user={user?user:null} closeToggle ={setToggleSidebar} />
                 {/* <Sidebar user = {user && user} closeToggle = {setToggleSidebar(false)} /> */}
             </div>
 
@@ -59,7 +59,7 @@ const Home = () => {
                 
                     <Link to="/" className="flex flex-row items-center">
                         <img src={logo} alt="logo" className="h-12 w-12 ml-2"/>
-                        <span className="text-gray-700 dark:text-gray-200 text-xl font-bold">PINTEREST</span>
+                        <span className="text-gray-700 dark:text-gray-50 text-xl font-extrabold">PINTEREST</span>
                     </Link>
                     <Link  to ={`user-profile/${user?.id}`}>
                         <img src={user?.image} alt="profile" className="h-10 w-10 ml-2 rounded-full" />
@@ -69,15 +69,11 @@ const Home = () => {
 
             {
                 toggleSidebar && (
-                    <div className="fixed w-4/5 h-full dark:bg-black shadow-lg overflow-y-auto animate-slide-in z-10 ">
+                    <div className="fixed w-4/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
                         <div className="absolute w-full flex justify-end items-center p-2">
-                            <Sidebar user={user ? user: null} toggleSidebar={toggleSidebar} setToggleSidebar={setToggleSidebar} />
-                            <AiOutlineClose
-                                className="cursor-pointer text-gray-300 dark:bg-gray-200 rounded-full dark:text-gray-700"
-                                fontSize={24}
-                                onClick={() => {setToggleSidebar(false)}}
-                            />
+                            <AiFillCloseCircle fontSize={30} className="cursor-pointer" onClick={() => setToggleSidebar(false)} />
                         </div>
+                        <Sidebar user={user ? user: null}  closeToggle={setToggleSidebar} />
                     </div>
                 )
             }
