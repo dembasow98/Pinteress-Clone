@@ -33,7 +33,7 @@ export default{
         },
         {
             name: 'postedBy',
-            title: 'PosterBy',
+            title: 'PostedBy',
             type: 'postedBy',
         },
         {

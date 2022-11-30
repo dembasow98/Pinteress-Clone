@@ -76,12 +76,12 @@ const Pin = ({pin}) => {
                 onClick={(e) => {
                   e.stopPropagation();
                 }}
-                className="bg-white w-9 h-9 p-2 rounded-full flex items-center justify-center text-dark text-xl opacity-75 hover:opacity-100 hover:shadow-md outline-none"
+                className="bg-white dark:bg-gray-600 w-9 h-9 p-2 rounded-full flex items-center justify-center text-dark text-xl opacity-75 hover:opacity-100 hover:shadow-md outline-none"
               ><MdDownloadForOffline />
               </a>
             </div>
             {alreadySaved?.length !== 0 ? (
-              <button type="button" className="bg-red-500 opacity-70 hover:opacity-100 text-white font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outline-none">
+              <button type="button" className="bg-red-500 dark:bg-blue-800  opacity-70 hover:opacity-100 text-white font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outline-none">
                 {pin?.save?.length}  Saved
               </button>
             ) : (
@@ -91,7 +91,7 @@ const Pin = ({pin}) => {
                   savePin(_id);
                 }}
                 type="button"
-                className="bg-red-500 opacity-70 hover:opacity-100 text-white font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outline-none"
+                className="bg-red-500 dark:bg-blue-800 opacity-70  hover:opacity-100 text-white font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outline-none"
               >
                 {pin?.save?.length}   {savingPost ? 'Saving' : 'Save'}
               </button>
@@ -118,9 +118,10 @@ const Pin = ({pin}) => {
              e.stopPropagation();
              deletePin(_id);
            }}
-           className="bg-white p-2 rounded-full w-8 h-8 flex items-center justify-center text-dark opacity-75 hover:opacity-100 outline-none"
+           className="bg-white text-red-600 float-right dark:bg-gray-600 6p-2 rounded-full w-8 h-8 flex items-center justify-center text-dark opacity-75 hover:opacity-100 outline-none"
          >
-           <AiTwotoneDelete />
+           <AiTwotoneDelete
+           />
          </button>
          )
       }
@@ -134,7 +135,7 @@ const Pin = ({pin}) => {
         src={postedBy?.image}
         alt="user-profile"
       />
-      <p className="font-semibold capitalize">{postedBy?.userName}</p>
+      <p className="font-semibold dark:text-white capitalize">{postedBy?.username}</p>
     </Link>
   </div>
   )

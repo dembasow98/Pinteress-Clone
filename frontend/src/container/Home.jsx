@@ -15,6 +15,7 @@ import { userQuery} from "../utils/data";
 
 const Home = () => {
 
+    
     //useState hook to set the state of the sidebar
     const [toggleSidebar, setToggleSidebar] = useState(false);
 
@@ -61,7 +62,7 @@ const Home = () => {
                         <img src={logo} alt="logo" className="h-12 w-12 ml-2"/>
                         <span className="text-gray-700 dark:text-gray-50 text-xl font-extrabold">PINTEREST</span>
                     </Link>
-                    <Link  to ={`user-profile/${user?.id}`}>
+                    <Link  to ={`user-profile/${user?._id}`}>
                         <img src={user?.image} alt="profile" className="h-10 w-10 ml-2 rounded-full" />
                     </Link>
                 </div>
@@ -69,7 +70,7 @@ const Home = () => {
 
             {
                 toggleSidebar && (
-                    <div className="fixed w-[80%] bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
+                    <div className="fixed w-[80%] max-w-[320px] md:max-w-500 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
                         <div className="absolute w-full flex justify-end items-center p-2">
                             <AiFillCloseCircle fontSize={30} className="cursor-pointer" onClick={() => setToggleSidebar(false)} />
                         </div>

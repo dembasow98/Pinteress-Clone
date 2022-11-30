@@ -8,8 +8,8 @@ import { client } from '../client';
 import MasonryLayout from './MasonryLayout';
 import Spinner from './Spinner';
 
-const activeBtnStyles = 'bg-red-500 text-white font-bold p-2 rounded-full w-20 outline-none';
-const notActiveBtnStyles = 'bg-primary mr-4 text-black font-bold p-2 rounded-full w-20 outline-none';
+const activeBtnStyles = 'bg-red-500 dark:text-gray-900 text-slate-200 font-bold p-2 rounded-full w-20 outline-none';
+const notActiveBtnStyles = 'bg-primary mr-4 text-black dark:text-white font-bold p-2 rounded-full w-20 outline-none';
 
 const UserProfile = () => {
   const [user, setUser] = useState();

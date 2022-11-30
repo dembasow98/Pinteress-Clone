@@ -4,6 +4,7 @@ import { RiHomeFill } from 'react-icons/ri'
 import {IoIosArrowForward} from "react-icons/io"; 
 //import the profile icon from react-icons
 import { RiProfileFill } from 'react-icons/ri'
+import { categories } from '../utils/data';
 
 import logo from '../assets/pinterestlogo.png'
 
@@ -22,37 +23,29 @@ const Sidebar = ( {user, closeToggle}) => {
     }
   }
 
-  //categories
-  const categories = [
-    {name: 'Following', icon: <IoIosArrowForward />, link: '/following'},
-    {name: 'For you', icon: <IoIosArrowForward />, link: '/for-you'},
-    {name: 'Trending', icon: <IoIosArrowForward />, link: '/trending'},
-    {name: 'Food and drink', icon: <IoIosArrowForward />, link: '/food-and-drink'},
-    {name: 'DIY and crafts', icon: <IoIosArrowForward />, link: '/diy-and-crafts'},
-    {name: 'Travel', icon: <IoIosArrowForward />, link: '/travel'},
-    {name: 'Beauty', icon: <IoIosArrowForward />, link: '/beauty'},
-    {name: 'Home decor', icon: <IoIosArrowForward />, link: '/home-decor'},
-    {name: 'Fashion', icon: <IoIosArrowForward />, link: '/fashion'},
-    {name: 'Other', icon: <IoIosArrowForward />, link: '/others'},
-  ];
+  //categories 
+  //Get the categories from the utils/data.js file
+
   
   return (
     <div className='flex bg-black w-full flex-col justify-between h-full overflow-y-scroll min-w-210 hide-scrollbar'>
       <div className='flex flex-col'>
-        <Link 
-          to="/" 
-          onClick={handleCloseSidebar}
-          className='flex flex-row items-center justify-start'
-        >
-          <img src={logo} alt="logo" className=" h-12 w-12  cursor-pointer "/>
-          <span className="text-gray-700 cursor-pointer dark:text-gray-50 text-xl font-extrabold">PINTEREST</span>
-        </Link>
+
+        <div className='cursor-pointer w-fit'>
+          <Link 
+            to="/" 
+            onClick={handleCloseSidebar}
+            className='flex flex-row items-center justify-start'
+          >
+            <img src={logo} alt="logo" className=" h-12 w-12"/>
+            <p className="text-gray-700 dark:text-gray-50 text-xl font-extrabold">PINTEREST</p>
+          </Link>
+        </div>
        
 
         <div className='flex flex-col gap-2 mt-2'>
           <NavLink 
             to="/"
-            //if the navlink is active, add the active class, else add the not active class
             className={({isActive}) => isActive ? isActiveStyle : isNotActiveStyle}
             onClick={handleCloseSidebar}
           >
@@ -67,11 +60,11 @@ const Sidebar = ( {user, closeToggle}) => {
           {categories.slice(0, categories.length - 1).map((category, index) => (
             <NavLink
               key={index}
-              to={`category${category.link}`}
+              to={`category/${category.name}`}
               className={({isActive}) => isActive ? isActiveStyle : isNotActiveStyle}
               onClick={handleCloseSidebar}
             >
-              {category.icon}
+              <img src={category.image} className="w-8 h-8 rounded-full shadow-sm" />
               {category.name}
             </NavLink>
           ))}
@@ -80,10 +73,9 @@ const Sidebar = ( {user, closeToggle}) => {
       </div>
       
         { user && (
-
           <Link  
-            to ={`user-profile/${user?.id}`}
-            className='flex flex-row items-center justify-start px-5 py-2 gap-3 text-gray-200 hover:text-gray-50 hover:font-bold transition-all duration-200 ease-in-out capitalize'
+            to ={`user-profile/${user?._id}`}
+            className='flex flex-row my-5 items-center justify-start px-5 py-2 gap-3 text-gray-200 hover:text-gray-50 hover:font-bold transition-all duration-200 ease-in-out capitalize'
             onClick={handleCloseSidebar}
           >
             <img src={user?.image} alt="profile" className="h-8 w-8 ml-2 rounded-full" />

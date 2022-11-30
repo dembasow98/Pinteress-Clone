@@ -62,8 +62,8 @@ const PinDetail = ({ user }) => {
   return (
     <>
       {pinDetail && (
-        <div className="flex xl:flex-row flex-col m-auto bg-white  dark:bg-gray-700" style={{ maxWidth: '1500px', borderRadius: '32px' }}>
-          <div className="flex justify-center items-center md:items-start flex-initial">
+        <div className="flex flex-col m-auto bg-white p-5  dark:bg-black" style={{ maxWidth: '1500px', borderRadius: '32px' }}>
+          <div className="flex justify-center items-center">
             <img
               className="rounded-t-3xl rounded-b-lg"
               src={(pinDetail?.image && urlFor(pinDetail?.image).url())}
@@ -85,16 +85,17 @@ const PinDetail = ({ user }) => {
                 {pinDetail.destination?.slice(8)}
               </a>
             </div>
+            <Link to={`/user-profile/${pinDetail?.postedBy._id}`} className="flex gap-2 mt-5 items-center dark:text-gray-100 rounded-lg ">
+              <img src={pinDetail?.postedBy.image} className="w-10 h-10 rounded-full" alt="user-profile" />
+              <p className="font-bold">{pinDetail?.postedBy.username}</p>
+            </Link>
             <div>
               <h1 className="text-4xl font-bold break-words mt-3">
                 {pinDetail.title}
               </h1>
               <p className="mt-3">{pinDetail.about}</p>
             </div>
-            <Link to={`/user-profile/${pinDetail?.postedBy._id}`} className="flex gap-2 mt-5 items-center bg-white dark:bg-gray-900 dark:text-gray-100 rounded-lg ">
-              <img src={pinDetail?.postedBy.image} className="w-10 h-10 rounded-full" alt="user-profile" />
-              <p className="font-bold">{pinDetail?.postedBy.userName}</p>
-            </Link>
+            
             <h2 className="mt-5 text-2xl">Comments</h2>
             <div className="max-h-370 overflow-y-auto">
               {pinDetail?.comments?.map((item) => (
@@ -105,7 +106,7 @@ const PinDetail = ({ user }) => {
                     alt="user-profile"
                   />
                   <div className="flex flex-col">
-                    <p className="font-bold">{item.postedBy?.userName}</p>
+                    <p className="font-bold">{item.postedBy?.username}</p>
                     <p>{item.comment}</p>
                   </div>
                 </div>
