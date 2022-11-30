@@ -11,6 +11,8 @@ import Spinner from './Spinner';
 const activeBtnStyles = 'bg-red-500 dark:text-gray-900 text-slate-200 font-bold p-2 rounded-full w-20 outline-none';
 const notActiveBtnStyles = 'bg-primary mr-4 text-black dark:text-white font-bold p-2 rounded-full w-20 outline-none';
 
+
+
 const UserProfile = () => {
   const [user, setUser] = useState();
   const [pins, setPins] = useState();
@@ -19,7 +21,13 @@ const UserProfile = () => {
   const navigate = useNavigate();
   const { userId } = useParams();
 
+
   const User = localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : localStorage.clear();
+
+
+  //Get random image from unsplash 
+  const randomImage = `https://source.unsplash.com/random/1920x1080?sig=${Math.floor(Math.random() * 100)}`;
+  console.log(randomImage);
 
   useEffect(() => {
     const query = userQuery(userId);
@@ -59,7 +67,7 @@ const UserProfile = () => {
           <div className="flex flex-col justify-center items-center">
             <img
               className=" w-full h-370 2xl:h-510 shadow-lg object-cover"
-              src="https://source.unsplash.com/1600x900/?nature,photography,technology"
+              src={randomImage}
               alt="user-pic"
             />
             <img
